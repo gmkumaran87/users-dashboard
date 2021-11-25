@@ -15,9 +15,8 @@ function App() {
           <div className="wrapper">
             <Header />
             <Routes>
+              <Route path="/" element={<Dashboard data={data[0]} />} />
               <Route path="/dashboard" element={<Dashboard data={data[0]} />} />
-            </Routes>
-            <Routes>
               <Route path="/table" element={<Table />} />
             </Routes>
           </div>
