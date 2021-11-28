@@ -7,10 +7,8 @@ const Navigation = () => {
     <>
       <nav className="nav-sidebar">
         <div className="nav-brand">
-          <i className="fas fa-laugh-wink"> </i>
-          <h2>SB ADMIN</h2>
+          <i className="fas fa-laugh-wink"> </i> <h2> SB ADMIN </h2>
         </div>
-
         <ul className="links">
           <li>
             <NavLink className="nav-link" to="/dashboard">
@@ -33,11 +31,11 @@ const Navigation = () => {
             </a>
           </li>
           <li>
-            <NavLink className="nav-link" to="/table">
+            <NavLink className="nav-link" to="/users">
               <i className="fas fa-fw fa-table"> </i> <span> Tables </span>
             </NavLink>
           </li>
-          <li></li>
+          <li> </li>
         </ul>
       </nav>
     </>

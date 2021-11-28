@@ -35,7 +35,7 @@ function App() {
                 {!content && (
                   <Route path="/dashboard" element={<Dashboard />} />
                 )}
-                {!content && <Route path="/table" element={<Table />} />}
+                {!content && <Route path="/users" element={<Table />} />}
               </Routes>
             </Main>
           </div>
