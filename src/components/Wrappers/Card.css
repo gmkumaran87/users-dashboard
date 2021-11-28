@@ -1,0 +1,24 @@
+.card {
+    background-color: var(--clr-white);
+    box-shadow: var(--light-shadow);
+    border-radius: var(--radius);
+    padding: .25rem .5rem;
+    color: var(--clr-grey-5);
+    /* width: 300px; */
+}
+
+.border-blue {
+    border-left: .25rem solid var(--clr-primary-5);
+}
+
+.border-green {
+    border-left: .25rem solid var(--clr-green-light);
+}
+
+.border-cyan {
+    border-left: .25rem solid cyan;
+}
+
+.border-orange {
+    border-left: .25rem solid orange;
+}

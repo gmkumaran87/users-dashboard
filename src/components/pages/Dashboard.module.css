@@ -1,12 +1,23 @@
-.main {
-    padding: 1.5rem;
-    font-family: inherit;
-    max-width: 1020px;
-}
-
 .cards {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     justify-content: space-between;
-    gap: 1.5rem;
+    gap: 1rem;
+    width: 100%;
+}
+
+@media(min-width: 768px) {
+    .cards {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1.5rem;
+        width: 100%;
+        margin: 1rem auto;
+    }
+    .title {
+        text-align: center;
+        margin-bottom: .7rem;
+    }
 }

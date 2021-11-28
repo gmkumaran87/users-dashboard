@@ -1,0 +1,49 @@
+.emp-table {
+    width: 95%;
+    border-collapse: collapse;
+    margin-top: .5rem;
+}
+
+tr:nth-of-type(odd) {
+    background-color: #fff;
+}
+
+th {
+    background: #333;
+    color: white;
+    font-weight: bold;
+}
+
+td,
+th {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.edit-btn {
+    color: green;
+}
+
+.delete-btn {
+    color: red;
+}
+
+.edit-btn:hover {
+    background-color: transparent;
+}
+
+.edit-btn:active,
+.delete-btn:active {
+    transform: scale(.9);
+}
+
+.icons {
+    border: none;
+    background: transparent;
+    padding: 5px;
+    margin-right: 7px;
+    cursor: pointer;
+    box-shadow: none;
+    font-size: 1rem;
+}

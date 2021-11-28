@@ -1,0 +1,49 @@
+.cardBody {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.row1,
+.row2 {
+    margin: .3rem 0;
+}
+
+.row1 {
+    color: var(--clr-primary-5);
+    font-size: .75rem;
+}
+
+.row2 {
+    font-size: 1rem;
+}
+
+.col2 {
+    margin-top: .4rem;
+}
+
+.green {
+    color: var(--clr-green-light);
+}
+
+.cyan {
+    color: cyan;
+}
+
+.orange {
+    color: orange;
+}
+
+.cardBody i {
+    width: 20px;
+    height: 20px;
+    font-size: 1.5rem;
+}
+
+@media(min-width: 768px) {
+    .cardBody {
+        width: 220px;
+        padding: 1.25rem;
+    }
+}
