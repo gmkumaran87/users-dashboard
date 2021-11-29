@@ -1,26 +1,26 @@
 import React from "react";
 import "./Table.css";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import Button from "../Button";
 
 const TableRow = (props) => {
-  console.log(props);
-  const { name, position, age, salary, office, startDt } = props;
+  const { name, position, age, salary, office, startDt, id } = props;
 
   return (
     <tr>
-      <td>{name}</td>
-      <td>{position}</td>
-      <td>{age}</td>
-      <td>{office}</td>
-      <td>{startDt}</td>
-      <td>{salary}</td>
+      <td> {name} </td>
+      <td> {position}</td>
+      <td> {office} </td>
+      <td> {age} </td>
+      <td> {startDt} </td>
+      <td> {salary} </td>
       <td>
-        <button className="edit-btn icons">
-          <FaEdit></FaEdit>
-        </button>
-        <button className="delete-btn icons">
+        <Button className="edit-btn icons" id={id} text="edit">
+          <FaEdit />
+        </Button>
+        <Button className="delete-btn icons" id={id} text="delete">
           <FaTrash />
-        </button>
+        </Button>
       </td>
     </tr>
   );

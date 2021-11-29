@@ -6,10 +6,11 @@ import { useGlobalContext } from "../../context/Context";
 const Table = () => {
   const { users } = useGlobalContext();
 
+  console.log(users);
   return (
     <>
       <h2> Tables </h2>
-      <table class="emp-table">
+      <table className="emp-table">
         <thead>
           <tr>
             <th>Name</th>
@@ -25,6 +26,7 @@ const Table = () => {
           {users.map((el) => (
             <TableRow
               key={el.id}
+              id={el.id}
               name={el.name}
               age={el.age}
               office={el.office}

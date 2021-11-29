@@ -16,9 +16,14 @@ const Navigation = () => {
             </NavLink>
           </li>
           <li>
-            <a className="nav-link" href="/">
+            <NavLink className="nav-link" to="/users">
+              <i className="fas fa-fw fa-table"> </i> <span> All Users </span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className="nav-link" to="/create-user">
               <i className="fas fa-fw fa-cog"> </i> <span> Create User </span>
-            </a>
+            </NavLink>
           </li>
           <li>
             <a className="nav-link" href="/">
@@ -30,12 +35,6 @@ const Navigation = () => {
               <i className="fas fa-fw fa-chart-area"> </i> <span> Charts </span>
             </a>
           </li>
-          <li>
-            <NavLink className="nav-link" to="/users">
-              <i className="fas fa-fw fa-table"> </i> <span> Tables </span>
-            </NavLink>
-          </li>
-          <li> </li>
         </ul>
       </nav>
     </>

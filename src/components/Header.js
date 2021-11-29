@@ -3,10 +3,11 @@ import "./Header.css";
 
 const Header = () => {
   const handleClick = (e) => {
-    console.log("clicking");
     const sidebar = document.querySelector(".nav-sidebar");
+    const wrapper = document.querySelector(".wrapper");
 
     sidebar.classList.toggle("nav-sidebar__show");
+    wrapper.classList.toggle("wrapper__show");
   };
   return (
     <header className="nav-top">

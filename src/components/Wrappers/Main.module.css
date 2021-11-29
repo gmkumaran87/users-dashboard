@@ -8,7 +8,10 @@
     .main {
         padding: 2rem 1rem .5rem 1rem;
         font-family: inherit;
-        max-width: 1020px;
-        margin: 0 2rem;
+        max-width: 940px;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: flex-start;
     }
 }

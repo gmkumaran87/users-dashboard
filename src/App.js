@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Navigation from "./components/Navigation";
+import CreateUser from "./components/pages/CreateUser";
 import Dashboard from "./components/pages/Dashboard";
 import Table from "./components/pages/Table";
 import Main from "./components/Wrappers/Main";
@@ -9,7 +10,7 @@ import { useGlobalContext } from "./context/Context";
 function App() {
   // Getting the inital value from the Store
   const { isLoading, users } = useGlobalContext();
-  console.log("In App", users);
+
   let content = "";
 
   // If the initial data is set and isLoading is True
@@ -36,6 +37,8 @@ function App() {
                   <Route path="/dashboard" element={<Dashboard />} />
                 )}
                 {!content && <Route path="/users" element={<Table />} />}
+                <Route path="/create-user/*" element={<CreateUser />} />
+                <Route path="/create-user/:userId" element={<CreateUser />} />
               </Routes>
             </Main>
           </div>
