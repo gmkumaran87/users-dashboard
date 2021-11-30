@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Navigation from "./components/Navigation";
 import CreateUser from "./components/pages/CreateUser";
 import Dashboard from "./components/pages/Dashboard";
+import EditUser from "./components/pages/EditUser";
 import Table from "./components/pages/Table";
 import Main from "./components/Wrappers/Main";
 import { useGlobalContext } from "./context/Context";
@@ -38,7 +39,9 @@ function App() {
                 )}
                 {!content && <Route path="/users" element={<Table />} />}
                 <Route path="/create-user/*" element={<CreateUser />} />
-                <Route path="/create-user/:userId" element={<CreateUser />} />
+                <Route path="/edit-user/:userId" element={<EditUser />}>
+                  <Route path="" element={<CreateUser />} />
+                </Route>
               </Routes>
             </Main>
           </div>

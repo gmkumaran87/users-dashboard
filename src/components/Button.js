@@ -14,7 +14,7 @@ const Button = (props) => {
   // console.log(classes);
 
   const handleClick = (e) => {
-    console.log(e.currentTarget, id);
+    // console.log(e.currentTarget, id);
     const currEl = e.currentTarget.dataset.text;
 
     if (currEl === "submit") props.btnSubmit(e);
@@ -22,7 +22,7 @@ const Button = (props) => {
     if (currEl === "delete") deleteUser(+id);
 
     if (currEl === "edit") {
-      navigate(`/create-user/${id}`, { replace: true });
+      navigate(`/edit-user/${id}`, { replace: true });
     }
   };
   return (

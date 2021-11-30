@@ -5,7 +5,7 @@ import { useGlobalContext } from "../../context/Context";
 
 const Dashboard = (props) => {
   const { users } = useGlobalContext();
-  console.log("In Dashboard", users);
+
   const { salary } = users[0];
 
   return (

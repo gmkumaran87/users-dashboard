@@ -6,7 +6,7 @@ import { useGlobalContext } from "../../context/Context";
 import { useNavigate, useParams } from "react-router";
 
 const CreateUser = () => {
-  const { addUser, users } = useGlobalContext();
+  const { addUser, users, updateUser } = useGlobalContext();
 
   const navigate = useNavigate();
 
@@ -31,34 +31,49 @@ const CreateUser = () => {
     salary: "",
     dateOfJoin: "",
   };
+  // const formatDate = (inpDate) => {
+  //   let dateReceived = new Date(inpDate);
+
+  //   let month = String(dateReceived.getMonth() + 1);
+  //   let day = String(dateReceived.getDate());
+  //   let year = dateReceived.getFullYear();
+
+  //   if (month.length < 2) {
+  //     month = "0" + month;
+  //   }
+  //   if (day.length < 2) {
+  //     day = `0${day}`;
+  //   }
+
+  //   return `${day}-${month}-${year}`;
+  // };
 
   // If the Params are available then load the current user in the form
-  if (+params.userId) {
+  if (editedId) {
     const [editUser] = users.filter((el) => el.id === editedId);
-    // console.log("Checking Params", initialState, stateObj, editUser);
+
     stateObj = editUser;
-    // console.log("Checking Params", initialState, stateObj);
   } else {
     stateObj = initialState;
-    console.log("Iniial State", initialState, stateObj);
   }
 
   const [userForm, setUserForm] = useState(stateObj);
 
   const handleSubmit = (e) => {
-    console.log("Clicking Submit btn", userForm, users);
-
     const existingId = users.map((el) => el.id).sort((a, b) => a - b);
 
     // Assigning new Id
     const newId = existingId[existingId.length - 1] + 1;
-    console.log(existingId, newId);
 
-    addUser({
-      ...userForm,
-      id: newId,
-      dateOfJoin: new Date(userForm.dateOfJoin),
-    });
+    if (editedId) {
+      updateUser(userForm, editedId);
+    } else {
+      addUser({
+        ...userForm,
+        id: newId,
+        dateOfJoin: new Date(userForm.dateOfJoin),
+      });
+    }
 
     navigate("/users", { replace: true });
     setUserForm((prev) => ({
@@ -71,8 +86,6 @@ const CreateUser = () => {
       dateOfJoin: "",
     }));
   };
-
-  console.log("UserForm details", userForm);
 
   return (
     <div className="formContainer">
@@ -108,7 +121,13 @@ const CreateUser = () => {
               value={userForm.age}
               onChange={(e) =>
                 setUserForm((state) => {
-                  const value = parseInt(e.target.value);
+                  const input = e.target.value.trim();
+                  let value = 0;
+                  console.log(input);
+                  if (input) {
+                    value = parseInt(input);
+                  }
+
                   return { ...state, age: value };
                 })
               }
@@ -173,6 +192,7 @@ const CreateUser = () => {
               onChange={(e) =>
                 setUserForm((state) => {
                   const value = e.target.value;
+                  console.log("Date value selected", value, typeof value);
                   return { ...state, dateOfJoin: value };
                 })
               }

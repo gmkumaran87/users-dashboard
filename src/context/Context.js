@@ -34,7 +34,7 @@ const Context = (props) => {
 
   // Updating a User
   const updateUser = (obj, id) => {
-    dispatch({ type: "DELETE_USER", payload: id });
+    dispatch({ type: "UPDATE_USER", payload: { obj, id } });
   };
 
   //   console.log("Before return ", state);

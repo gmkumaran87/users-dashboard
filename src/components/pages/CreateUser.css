@@ -4,7 +4,7 @@
     box-shadow: var(--light-shadow);
     transition: var(--transition);
     padding: 1rem;
-    margin-top: 1.6rem;
+    /* margin-top: 1.6rem; */
     font-family: inherit;
     font-weight: normal;
 }
@@ -64,7 +64,7 @@ legend {
     .formContainer {
         max-width: 550px;
         width: 100%;
-        margin-left: 2.5rem;
+        /* margin-left: 2.5rem; */
     }
     .formControl {
         display: flex;
