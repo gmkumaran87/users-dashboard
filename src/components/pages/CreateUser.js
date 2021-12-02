@@ -11,10 +11,9 @@ const CreateUser = () => {
   const navigate = useNavigate();
 
   const params = useParams();
-  const editedId = +params.userId;
+  const editedId = params.userId;
 
   let stateObj = {
-    id: 0,
     name: "",
     age: "",
     position: "",
@@ -23,7 +22,6 @@ const CreateUser = () => {
     dateOfJoin: "",
   };
   const initialState = {
-    id: 0,
     name: "",
     age: "",
     position: "",
@@ -31,27 +29,27 @@ const CreateUser = () => {
     salary: "",
     dateOfJoin: "",
   };
-  // const formatDate = (inpDate) => {
-  //   let dateReceived = new Date(inpDate);
+  /*const formatDate = (inpDate) => {
+    let dateReceived = new Date(inpDate);
 
-  //   let month = String(dateReceived.getMonth() + 1);
-  //   let day = String(dateReceived.getDate());
-  //   let year = dateReceived.getFullYear();
+    let month = String(dateReceived.getMonth() + 1);
+    let day = String(dateReceived.getDate());
+    let year = dateReceived.getFullYear();
 
-  //   if (month.length < 2) {
-  //     month = "0" + month;
-  //   }
-  //   if (day.length < 2) {
-  //     day = `0${day}`;
-  //   }
+    if (month.length < 2) {
+      month = "0" + month;
+    }
+    if (day.length < 2) {
+      day = `0${day}`;
+    }
 
-  //   return `${day}-${month}-${year}`;
-  // };
+    return `${day}-${month}-${year}`;
+  };*/
 
   // If the Params are available then load the current user in the form
   if (editedId) {
     const [editUser] = users.filter((el) => el.id === editedId);
-
+    // console.log("EDITED USER", editUser, users);
     stateObj = editUser;
   } else {
     stateObj = initialState;
@@ -60,19 +58,10 @@ const CreateUser = () => {
   const [userForm, setUserForm] = useState(stateObj);
 
   const handleSubmit = (e) => {
-    const existingId = users.map((el) => el.id).sort((a, b) => a - b);
-
-    // Assigning new Id
-    const newId = existingId[existingId.length - 1] + 1;
-
     if (editedId) {
       updateUser(userForm, editedId);
     } else {
-      addUser({
-        ...userForm,
-        id: newId,
-        dateOfJoin: new Date(userForm.dateOfJoin),
-      });
+      addUser(userForm);
     }
 
     navigate("/users", { replace: true });
@@ -192,7 +181,6 @@ const CreateUser = () => {
               onChange={(e) =>
                 setUserForm((state) => {
                   const value = e.target.value;
-                  console.log("Date value selected", value, typeof value);
                   return { ...state, dateOfJoin: value };
                 })
               }

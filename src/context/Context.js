@@ -1,9 +1,11 @@
+import axios from "axios";
 import React, { useContext, useEffect, useReducer } from "react";
-import data from "../data";
 import reducer from "./reducer";
 
 // Creating a Context
 const AppContext = React.createContext();
+
+const URL = "https://614eabf5b4f6d30017b482ac.mockapi.io/user-detail";
 
 const initialState = {
   users: [],
@@ -17,27 +19,73 @@ const Context = (props) => {
 
   //Loading the inital data from data.js
   useEffect(() => {
-    dispatch({ type: "LOAD_USER", payload: data });
-    dispatch({ type: "LOADING" });
+    const getData = async (url) => {
+      try {
+        const response = await axios(url);
+        if (response.statusText !== "OK") {
+          throw new Error("Something went wrong");
+        }
+        dispatch({ type: "LOAD_USER", payload: response.data });
+        dispatch({ type: "LOADING" });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getData(URL);
   }, []);
 
   // Adding a new User into the Array
-  const addUser = (obj) => {
-    console.log("In Context", obj);
-    dispatch({ type: "ADD_USER", payload: obj });
+  const addUser = async (obj) => {
+    try {
+      const res = await axios.post(URL, obj);
+      /*if (res.statusText !== "OK") {
+        throw new Error("Something went wrong");
+      }*/
+
+      dispatch({ type: "ADD_USER", payload: res.data });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // Deleting a User
   const deleteUser = (id) => {
-    dispatch({ type: "DELETE_USER", payload: id });
+    const newUrl = `${URL}/${id}`;
+    const deletetoApi = async () => {
+      try {
+        const res = await axios.delete(newUrl);
+
+        if (res.statusText !== "OK") {
+          throw new Error("Something went wrong!");
+        }
+
+        dispatch({ type: "DELETE_USER", payload: id });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    deletetoApi();
   };
 
   // Updating a User
   const updateUser = (obj, id) => {
-    dispatch({ type: "UPDATE_USER", payload: { obj, id } });
+    const newUrl = `${URL}/${id}`;
+
+    const updatetoApi = async (obj) => {
+      try {
+        const res = await axios.put(newUrl, obj);
+        if (res.statusText !== "OK") {
+          throw new Error("Something went wrong!");
+        }
+        dispatch({ type: "UPDATE_USER", payload: { obj: res.data, id } });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    updatetoApi(obj);
   };
 
-  //   console.log("Before return ", state);
   return (
     <AppContext.Provider value={{ ...state, addUser, deleteUser, updateUser }}>
       {props.children}

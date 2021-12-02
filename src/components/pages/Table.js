@@ -6,25 +6,6 @@ import { useGlobalContext } from "../../context/Context";
 const Table = () => {
   const { users } = useGlobalContext();
 
-  console.log(users);
-
-  const formatDate = (inpDate) => {
-    let dateReceived = new Date(inpDate);
-
-    let month = String(dateReceived.getMonth() + 1);
-    let day = String(dateReceived.getDate());
-    let year = dateReceived.getFullYear();
-
-    if (month.length < 2) {
-      month = "0" + month;
-    }
-    if (day.length < 2) {
-      day = `0${day}`;
-    }
-
-    return `${day}-${month}-${year}`;
-  };
-
   return (
     <>
       <h2> Tables </h2>

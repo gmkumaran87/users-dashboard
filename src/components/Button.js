@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { useGlobalContext } from "../context/Context";
 
 const Button = (props) => {
-  const { deleteUser, updateUser } = useGlobalContext();
+  const { deleteUser } = useGlobalContext();
 
   const navigate = useNavigate();
 
@@ -19,7 +19,10 @@ const Button = (props) => {
 
     if (currEl === "submit") props.btnSubmit(e);
 
-    if (currEl === "delete") deleteUser(+id);
+    if (currEl === "delete") {
+      deleteUser(id);
+      navigate("/users", { replace: true });
+    }
 
     if (currEl === "edit") {
       navigate(`/edit-user/${id}`, { replace: true });
